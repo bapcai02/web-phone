@@ -5,15 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 class BrandController extends Controller
 {
     public function all_brand(){
-        $brand = DB::table('brand')->get();
+        if(Auth::check()){
+            $brand = DB::table('brand')->get();
 
-        return view('backend.pages.all_brand',compact('brand'));
+            return view('backend.pages.all_brand',compact('brand'));
+        }
+        else{
+            return redirect('admin');
+        }
     }
     public function add_brand(){
-        return view('backend.pages.add_brand');
+        if(Auth::check()){
+            return view('backend.pages.add_brand');
+        }
+        else{
+            return redirect('admin');
+        }       
     }
     public function save_brand(Request $req){
 
@@ -30,8 +41,14 @@ class BrandController extends Controller
 
     }
     public function edit_brand($id){
-        $brand = DB::table('brand')->where('id',$id)->get();
-        return view('backend.pages.edit_brand',compact('brand'));
+        if(Auth::check()){
+            $brand = DB::table('brand')->where('id',$id)->get();
+            return view('backend.pages.edit_brand',compact('brand'));
+        }
+        else{
+            return redirect('admin');
+        }
+        
     }
     public function update_brand($id, Request $req){
         $data = array();

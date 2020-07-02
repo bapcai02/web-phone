@@ -31,14 +31,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
 <div class="w3layouts-main">
 	<h2>Sign In Now</h2>
+	@if(session()->has('message'))
+		<div class="alert alert-success">
+			{{ session()->get('message') }}
+		</div>
+	@endif
+	@if ($errors->any())
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				<span class="sr-only">Close</span>
+			</button>
+		</div>
+	@endif
 		<form action="{{route('login')}}" method="post">
 			@csrf
-			<input type="text" class="ggg" name="Email" placeholder="E-MAIL" required="">
-			<input type="password" class="ggg" name="Password" placeholder="PASSWORD" required="">
-			<span><input type="checkbox" />Remember Me</span>
+			<input type="text" class="ggg" name="email" placeholder="E-MAIL" required="">
+			<input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
+			<span><h6><a href="{{ route('register') }}">Register</a></h6></span>
 			<h6><a href="#">Forgot Password?</a></h6>
 				<div class="clearfix"></div>
-				<input type="submit" value="Sign In" name="login">
+				<input type="submit" value="Sign In">
 		</form>
 </div>
 </div>
