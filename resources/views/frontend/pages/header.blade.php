@@ -3,23 +3,58 @@
         <div class="row">
             <div id="logo" class="col-md-3 col-sm-12 col-xs-12">
                 <h1>
-                    <a href="#"><img width="100px" height="80px" src="img/home/logo.png"></a>						
+                    <a href="{{ route('index') }}"><img width="100px" height="80px" src="img/home/logo.png"></a>						
                     <nav><a id="pull" class="btn btn-danger" href="#">
                         <i class="fa fa-bars"></i>
                     </a></nav>			
                 </h1>
             </div>
-            <div id="search" class="col-md-7 col-sm-12 col-xs-12">
+            <div id="search" class="col-md-5 col-sm-10 col-xs-10">
                 <form action="{{ route('search') }}" method="GET">
                     @csrf
                     <input type="text" name="search" value="Nhập từ khóa ...">
                     <input type="submit" name="submit" value="Tìm Kiếm">
                 </form>
+               
             </div>
-            <div id="cart" class="col-md-2 col-sm-12 col-xs-12">
-                <a class="display" href="{{route('show')}}">Giỏ hàng</a>
-                <a href="#">{{Cart::count()}}</a>				    
-            </div>
+            
+                @if(Auth::check())
+                <div class="login">
+                    <span style="color: white" class="username">{{Auth::user()->name}}</span>
+                    <b class="caret"></b>
+                    <a href="{{route('out')}}"><i class="fa fa-key"></i> Log Out</a>
+                </div>
+            
+                <div id='cart' class="col-md-2 col-sm-10 col-xs-7">
+
+                    <a href="{{route('show')}}">{{Cart::count()}}</a>	
+                    
+                </div>
+                @else
+                <div class="login" >
+                    <a href="{{ route('login') }}">Sign In</a>
+                    <a href="{{ route('signup') }}">Sign Up</a>
+                </div>   
+                <div id='cart' class="col-md-2 col-sm-12 col-xs-9">
+                
+                    <a href="#">0</a>	
+                    
+                </div>
+                
+                @endif
+                          
         </div>			
     </div>
 </header>
+<style>
+    .login{
+        padding: 30px;
+    }
+    .login a{
+        padding: 7px;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+</style>

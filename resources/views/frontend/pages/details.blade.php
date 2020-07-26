@@ -39,7 +39,11 @@
 					<h4>Còn hàng: Còn hàng</h4>
 
 					<div class="botton" style="margin-top:30px">
+					@if(Auth::check())
 					<button class="btn btn-primary"><a style ='color:black;list-style-type:none' href = "{{route('cart',['id'=>$data->id])}}">Đặt Hàng</a></button>
+					@else
+					<button class="btn btn-primary"><a style ='color:black;list-style-type:none' onclick="thongbao()">Đặt Hàng</a></button>
+					@endif
 					</div>
 				</div>
 				
@@ -104,5 +108,11 @@
 			@endforeach
 		</div>
 	</div>
-</div>					
+</div>				
+<script>
+	function thongbao(){
+		alert(" bạn cần đăng nhập để mua hàng");
+	}
+	
+</script>	
 @endsection

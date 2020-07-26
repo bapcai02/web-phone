@@ -50,7 +50,7 @@
               <td>NULL</td>
             @endif
             @if($data->image3)
-              <td> <img src="{{URL::to('/backend/images/product/'.$data->image2)}}" width="100px" height="100px"></td>
+              <td> <img src="{{URL::to('/backend/images/product/'.$data->image3)}}" width="100px" height="100px"></td>
             @else
               <td>NULL</td>
             @endif

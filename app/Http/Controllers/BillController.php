@@ -14,7 +14,8 @@ class BillController extends Controller
 
     public function all_bill(){
         if(Auth::check()){
-            $bill = DB::table('bill')->join('product','product.id','bill.product_id')->paginate(5);
+            $bill = DB::table('bill')->join('product','product.id','bill.product_id')
+            ->orderBy('mhd','desc')->paginate(5);
             return view('backend.pages.all_bill',compact('bill'));
         }
         else{

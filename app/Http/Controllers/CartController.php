@@ -8,8 +8,10 @@ use Cart;
 use Illuminate\Support\Facades\Mail;
 use App\Product;
 use Illuminate\Mail\Mailer;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+
+
 class CartController extends Controller
 {
 
@@ -45,10 +47,11 @@ class CartController extends Controller
         return back();
     }
     public function checkout(Request $req){
-        
+        $id_user = Auth::user()->id;
         $items = Cart::content();
         foreach($items as $key){
             DB::table('bill')->insert([
+                'id_user' => $id_user,
                 'product_id' => $key->id,
                 'name_user' => $req->name,
                 'email' => $req->email,
@@ -65,20 +68,12 @@ class CartController extends Controller
     }
 
     public function email(Request $req){
-        // $to_name = "CUA HANG DIEN THOAI";
-        // $to_email = "hieuchance2018@gmail.com";//send to this email
-        
-        // $data = array("name"=>"noi dung ten","body"=>"noi dung body"); //body of mail.blade.php
-        
-        // Mail::send("frontend.pages.send_mail",$data,function($message) use ($to_name,$to_email){
-        // $message->to($to_email)->subject('test mail nhé');//send this mail with subject
-        // $message->from($to_email,$to_name);//send from this mail
-        // });
 
         $category = DB::table('category')->get();
+        $id_user = Auth::user()->id;
         $items = Cart::content();
         $total = Cart::total();
-        $bill = DB::table('bill')->orderBy('mhd','desc')->limit(1)->get();
+        $bill = DB::table('bill')->where('id_user',$id_user)->orderBy('mhd','desc')->limit(1)->get();
         return view('frontend.pages.email',compact('items','bill','total','category'));
     }
 }

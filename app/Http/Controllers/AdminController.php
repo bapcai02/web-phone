@@ -34,7 +34,8 @@ class AdminController extends Controller
         else{
             $email = $req->input('email');
             $password = ($req->input('password'));
-            if(Auth::attempt((['email'=>$email, 'password'=>$password]))){
+            $status = "1";
+            if(Auth::attempt((['email'=>$email, 'password'=>$password,'status'=>$status]))){
                 return redirect('dashboad');
                
             }

@@ -29,8 +29,7 @@
                     <td width="11.112%">Xóa</td>
                 </tr>
                 @foreach($items as $data)
-                <tr>
-               
+                <tr>    
                     <td><img width="200px" height="200px" class="img-responsive" src="{{URL::to('/backend/images/product/'.$data->options->img)}}"></td>
                     <td>{{$data->name}}</td>
                     <td>
@@ -51,7 +50,6 @@
                        <h3>Tổng thanh toán: {{$total}}VND</h3>  <span class="total-price"></span>                                                                            
                 </div>
                 <div class="col-md-6 col-sm-12 col-xs-12">
-                    <a href="#" class="my-btn btn">Cập Nhật Giỏ Hàng</a>
                     <a href="{{asset('delete/all')}}" class="my-btn btn">Xóa giỏ hàng</a>
                 </div>
             </div>

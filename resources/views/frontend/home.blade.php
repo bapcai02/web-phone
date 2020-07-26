@@ -8,11 +8,7 @@
 	<title> Shop - Home</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/home.css">
-	<link rel="stylesheet" href="css/cart.css">
-	<link rel="stylesheet" href="css/details.css">
-	<link rel="stylesheet" href="css/category.css">
-	<link rel="stylesheet" href="css/email.css">
-	<link rel="stylesheet" href="css/search.css">
+
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -50,7 +46,7 @@
 				<div id="sidebar" class="col-md-3">
 					<nav id="menu">
 						<ul>
-							<li class="menu-item">danh mục sản phẩm</li>
+							<li class="menu-item"><h6><b>DANH MỤC SẢN PHẨM</b></h6></li>
 							@foreach($category as $data) 
 								<li class="menu-item"><a href="{{route('getcate',['id'=>$data->id])}}">{{$data->name}}</a></li>
 							@endforeach	
@@ -70,7 +66,7 @@
 							<!-- The slideshow -->
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img src="img/home/slide-1.png" alt="Los Angeles" >
+									<img src="img/home/slide-2.png" alt="Los Angeles" >
 								</div>
 								<div class="carousel-item">
 									<img src="img/home/slide-2.png" alt="Chicago">

@@ -49,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</button>
 		</div>
 	@endif
-		<form action="{{route('login')}}" method="post">
+		<form action="{{route('adlogin')}}" method="post">
 			@csrf
 			<input type="text" class="ggg" name="email" placeholder="E-MAIL" required="">
 			<input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">

@@ -20,7 +20,7 @@ Route::get('/', function () {
 //admin
 Route::get('dashboad','AdminController@dashboad')->name('dashboad');
 Route::get('admin','AdminController@index')->name('admin');
-Route::post('admin-login','AdminController@login')->name('login');
+Route::post('admin-login','AdminController@login')->name('adlogin');
 Route::get('logout','AdminController@logout')->name('logout');
 Route::get('register','AdminController@register')->name('register');
 Route::post('signup','AdminController@signup')->name('signup');
@@ -75,20 +75,20 @@ Route::get('delete-size/{id}','SizeController@detete_size')->name('delete_size')
 
 Route::get('all-bill','BillController@all_bill')->name('all_bill');
 Route::get('print-pdf/{id}','BillController@print_order')->name('print_pdf');
-// Route::get('add-bill','BillController@add_bill')->name('add_bill');
-// Route::post('save-bill','BillController@save_bill')->name('save_bill');
-// Route::get('edit-bill/{id}','BillController@edit_bill')->name('edit_bill');
-// Route::post('update-bill/{id}','BillController@update_bill')->name('update_bill');
-// Route::get('delete-bill/{id}','BillController@detete_bill')->name('delete_bill');
+Route::get('add-bill','BillController@add_bill')->name('add_bill');
+Route::post('save-bill','BillController@save_bill')->name('save_bill');
+Route::get('edit-bill/{id}','BillController@edit_bill')->name('edit_bill');
+Route::post('update-bill/{id}','BillController@update_bill')->name('update_bill');
+Route::get('delete-bill/{id}','BillController@detete_bill')->name('delete_bill');
 
 //user
 
 Route::get('all-user','UserController@all_user')->name('all_user');
-// Route::get('add-user','UserController@add_user')->name('add_user');
-// Route::post('save-user','UserController@save_user')->name('save_user');
-// Route::get('edit-user/{id}','UserController@edit_user')->name('edit_user');
-// Route::post('update-user/{id}','UserController@update_user')->name('update_user');
-// Route::get('delete-user/{id}','UserController@detete_user')->name('delete_user');
+Route::get('add-user','UserController@add_user')->name('add_user');
+Route::post('save-user','UserController@save_user')->name('save_user');
+Route::get('edit-user/{id}','UserController@edit_user')->name('edit_user');
+Route::post('update-user/{id}','UserController@update_user')->name('update_user');
+Route::get('delete-user/{id}','UserController@detete_user')->name('delete_user');
 
 
 // type
@@ -102,6 +102,12 @@ Route::post('update-type/{id}','TypeController@update_type')->name('update_type'
 // Home
 
 Route::get('home','HomeController@index')->name('index');
+Route::get('login','HomeController@login')->name('login');
+Route::post('signin','HomeController@signin')->name('signin');
+Route::get('signup','HomeController@signup')->name('signup');
+Route::post('register','HomeController@register')->name('register');
+Route::get('out','HomeController@logout')->name('out');
+
 Route::get('details/{id}',"DetailController@getdetail")->name('details');
 Route::get('addcart/{id}','CartController@AddCart')->name('cart');
 Route::get('show','CartController@ShowCart')->name('show');
