@@ -72,14 +72,15 @@ class Category extends Controller
         $news = Categories::find($id);
         $news->delete();
 
-        return redirect('list-category')>with('message', 'Xoá thành công');;
+        return redirect('list-category')->with('message', 'Xoá thành công');
     }
 
     public function getcatgory($id){
         $cate = DB::table('category')->where('id',$id)->get();
+        $brand = DB::table('brand')->get();
         $categories = DB::table('category')->join('product','category.id','product.category_id')
         ->where('category_id',$id)->orderBy('category_id','desc')->paginate(8);
         $category = DB::table('category')->get();
-        return view('frontend.pages.category',compact('category','categories','cate'));
+        return view('frontend.pages.category',compact('category','categories','cate','brand'));
     }
 }

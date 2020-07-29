@@ -162,6 +162,6 @@ class ProductController extends Controller
     public function detete_product($id){
         
         DB::table('product')->where('id',$id)->delete();
-        return redirect('all-product')>with('message', 'Xoá thành công');;
+        return redirect('all-product')->with('message', 'Xoá thành công');
     }
 }

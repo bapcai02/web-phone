@@ -64,7 +64,13 @@ class BrandController extends Controller
     public function detete_brand($id){
         DB::table('brand')->where('id',$id)->delete();
 
-        return redirect('all-brand')>with('message', 'Xoá thành công');;
+        return redirect('all-brand')->with('message', 'Xoá thành công');;
     }
-
+    public function get($id){
+        $brand_s = DB::table('brand')->join('product','brand.id','product.brand_id')
+        ->where('brand_id',$id)->orderBy('brand_id','desc')->paginate(8);
+        $brand = DB::table('brand')->get();
+        $category = DB::table('category')->get();
+        return view('frontend\pages\brand',compact('category','brand_s','brand'));
+    }
 }

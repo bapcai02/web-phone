@@ -66,7 +66,7 @@ class InfoController extends Controller
     public function detete_brand($id){
         DB::table('info')->where('id',$id)->delete();
 
-        return redirect('all-info')>with('message', 'Xoá thành công');;
+        return redirect('all-info')->with('message', 'Xoá thành công');
     }
 
 }

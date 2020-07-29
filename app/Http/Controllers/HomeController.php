@@ -16,11 +16,12 @@ class HomeController extends Controller
     }
     public function index(){
         $category = DB::table('category')->limit(7)->get();
+        $brand = DB::table('brand')->get();
         $product_hot = DB::table('product')->orderBy('price_promotion','desc')->limit(8)->get();
         $product_new = DB::table('product')->orderBy('id','desc')->limit(8)->get();
         $product_watch = DB::table('product')->where('category_id','3')->orderBy('price_promotion','desc')->limit(4)->get();
         $product_accessories = DB::table('product')->where('category_id','6')->orderBy('price_promotion','desc')->limit(4)->get();
-        return view('frontend.pages.index',compact('category','product_hot','product_new','product_watch','product_accessories'));
+        return view('frontend.pages.index',compact('category','brand','product_hot','product_new','product_watch','product_accessories'));
     }
     public function search(Request $req){
 

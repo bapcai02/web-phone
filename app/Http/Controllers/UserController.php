@@ -49,6 +49,6 @@ class UserController extends Controller
 
         DB::table('users')->where('id',$id)->delete();
 
-        return redirect('all-user')>with('message', 'Xoá thành công');;
+        return redirect('all-user')->with('message', 'Xoá thành công');;
     } 
 }

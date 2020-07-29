@@ -67,6 +67,6 @@ class SizeController extends Controller
 
         DB::table('size')->where('id',$id)->delete();
 
-        return redirect('list-category')>with('message', 'Xoá thành công');;
+        return redirect('list-category')->with('message', 'Xoá thành công');
     } 
 }

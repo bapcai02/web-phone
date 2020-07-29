@@ -117,6 +117,7 @@ Route::post('checkout','CartController@checkout')->name('checkout');
 Route::get('email','CartController@email')->name('email');
 
 Route::get('category/{id}','Category@getcatgory')->name('getcate');
+Route::get('brand/{id}','BrandController@get')->name('get_brand');
 Route::get('search','HomeController@search')->name('search');
 
 

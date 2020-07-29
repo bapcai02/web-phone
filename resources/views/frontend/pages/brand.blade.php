@@ -4,7 +4,7 @@
 <div id="wrap-inner">
     <div class="products"> 
         <div class="product-list row">
-            @foreach($categories as $data) 
+            @foreach($brand_s as $data) 
             <div class="product-item col-md-3 col-sm-6 col-xs-12">
                 <a href="#"><img src="{{URL::to('/backend/images/product/'.$data->image1)}}" class="img-thumbnail"></a>
                 <p><a href="#">{{$data->name}}</a></p>
@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
-            {{ $categories->links() }}
+            {{ $brand_s->links() }}
           </ul>
         </div>
       </div>

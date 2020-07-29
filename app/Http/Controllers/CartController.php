@@ -28,11 +28,11 @@ class CartController extends Controller
         return redirect('show');
     }
     public function ShowCart(){
-        
+        $brand = DB::table('brand')->get();
         $category = DB::table('category')->get();
         $total = Cart::total();
         $items = Cart::content();
-       return view('frontend.pages.cart',compact('category','items','total'));
+       return view('frontend.pages.cart',compact('category','items','total','brand'));
     }
     public function UpdateCart(Request $req){
         Cart::update($req->rowId,$req->qty);
@@ -68,12 +68,12 @@ class CartController extends Controller
     }
 
     public function email(Request $req){
-
+        $brand = DB::table('brand')->get();
         $category = DB::table('category')->get();
         $id_user = Auth::user()->id;
         $items = Cart::content();
         $total = Cart::total();
         $bill = DB::table('bill')->where('id_user',$id_user)->orderBy('mhd','desc')->limit(1)->get();
-        return view('frontend.pages.email',compact('items','bill','total','category'));
+        return view('frontend.pages.email',compact('items','bill','total','category','brand'));
     }
 }

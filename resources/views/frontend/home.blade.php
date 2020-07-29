@@ -46,9 +46,17 @@
 				<div id="sidebar" class="col-md-3">
 					<nav id="menu">
 						<ul>
-							<li class="menu-item"><h6><b>DANH MỤC SẢN PHẨM</b></h6></li>
+							<li><a style="margin-left:10px;padding-top:8px"><h6 style="color: black">DANH MỤC SẢN PHẨM</h6> </a> </li>
 							@foreach($category as $data) 
-								<li class="menu-item"><a href="{{route('getcate',['id'=>$data->id])}}">{{$data->name}}</a></li>
+								<li ><a href="{{route('getcate',['id'=>$data->id])}}">{{$data->name}}</a>
+									<ul class="sub-menu">
+										@foreach($brand as $bra)
+											@if($bra->id_category == $data->id)											
+												<li><a href="{{route('get_brand',['id'=>$bra->id])}}">{{ $bra->name }}</a></li>										
+											@endif 
+										@endforeach
+									</ul>									
+								</li>
 							@endforeach	
 						<!-- <a href="#" id="pull">Danh mục</a> -->
 					</nav>

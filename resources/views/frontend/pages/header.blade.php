@@ -12,22 +12,22 @@
             <div id="search" class="col-md-5 col-sm-10 col-xs-10">
                 <form action="{{ route('search') }}" method="GET">
                     @csrf
-                    <input type="text" name="search" value="Nhập từ khóa ...">
+                    <input type="text" name="search" placeholder="Nhập từ khóa ...">
                     <input type="submit" name="submit" value="Tìm Kiếm">
                 </form>
                
             </div>
             
                 @if(Auth::check())
-                <div class="login">
+                <div class="login" style="width:200px ;margin-left:-30px;margin-right:-60px"  >
                     <span style="color: white" class="username">{{Auth::user()->name}}</span>
                     <b class="caret"></b>
                     <a href="{{route('out')}}"><i class="fa fa-key"></i> Log Out</a>
                 </div>
             
-                <div id='cart' class="col-md-2 col-sm-10 col-xs-7">
+                <div id='cart' class="col-md-2 col-sm-5 col-xs-5  ">
 
-                    <a href="{{route('show')}}">{{Cart::count()}}</a>	
+                    <a style="float: right; margin-right:30px" href="{{route('show')}}">{{Cart::count()}}</a>	
                     
                 </div>
                 @else
@@ -37,7 +37,7 @@
                 </div>   
                 <div id='cart' class="col-md-2 col-sm-12 col-xs-9">
                 
-                    <a href="#">0</a>	
+                    <a style="float: right; margin-right:30px">0</a>	
                     
                 </div>
                 
