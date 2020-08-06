@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     
     public function all_product(){
-        $product = DB::table('product')->orderBy('id','desc')->paginate(5);
+        $product = DB::table('product')->orderBy('id','desc')->paginate(5);    
         return view('backend.pages.all_product',compact('product'));
     }
     public function add_product(){
