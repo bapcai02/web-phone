@@ -51,7 +51,7 @@
 		</div>							
 	</div>
 	<div id="product-detail" style="margin-top:90px"> 
-		<div class="col-md-4" style="float: right;">
+		<div class="col-md-3" style="float: right;">
 			<h3>Thông Số Kỹ Thuật</h3>
 				@foreach($product_info as $data)
 				<table class="table" >
@@ -101,12 +101,14 @@
 					
 				@endforeach
 		</div>
+		<div class="col-md-9">
 		<div class="content">
 			<h3>Chi tiết sản phẩm</h3>
 			@foreach($product_post as $data)
 				{!! $data->posts !!}
 			@endforeach
 		</div>
+	</div>
 	</div>
 </div>				
 <script>

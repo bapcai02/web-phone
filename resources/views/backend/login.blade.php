@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<input type="text" class="ggg" name="email" placeholder="E-MAIL" required="">
 			<input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
 			<span><h6><a href="{{ route('register') }}">Register</a></h6></span>
-			<h6><a href="#">Forgot Password?</a></h6>
+			
 				<div class="clearfix"></div>
 				<input type="submit" value="Sign In">
 		</form>

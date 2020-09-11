@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Product;
 class HomeController extends Controller
 {
     public function __construct()
@@ -24,12 +25,16 @@ class HomeController extends Controller
         return view('frontend.pages.index',compact('category','brand','product_hot','product_new','product_watch','product_accessories'));
     }
     public function search(Request $req){
-
+        $brand = DB::table('brand')->get();
         $key = $req->search;
 
-        $search = DB::table('product')->where('name','like',$key)
-        ->orderBy('id','desc')->limit(8)->get();
-        return view('frontend.pages.search',compact('search'));
+        // $search = DB::table('product')->where('name','like',$key)
+        // ->orderBy('id','desc')->limit(8)->get();
+        $search = Product::where('name', 'like', '%' . $key . '%')->get();
+        if($search == [null]){
+            $search = null;
+        }
+        return view('frontend.pages.search',compact('search','brand'));
     }
     public function login(){
         return view('frontend\signin');

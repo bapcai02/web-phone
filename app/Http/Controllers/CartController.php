@@ -10,7 +10,7 @@ use App\Product;
 use Illuminate\Mail\Mailer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
-
+use App\Bill;
 
 class CartController extends Controller
 {
@@ -50,21 +50,23 @@ class CartController extends Controller
         $id_user = Auth::user()->id;
         $items = Cart::content();
         foreach($items as $key){
-            DB::table('bill')->insert([
-                'id_user' => $id_user,
-                'product_id' => $key->id,
-                'name_user' => $req->name,
-                'email' => $req->email,
-                'phone' => $req->phone,
-                'address' => $req->add,
-                'date_order' => Carbon::now(),
-                'total' => $key->price*$key->qty,
-                'qty' =>$key->qty,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
-        return redirect('email');
+            $bill = new Bill();
+
+                $bill ->id_user = $id_user;
+                $bill ->product_id = $key->id;
+                $bill ->name_user = $req->name;
+                $bill ->email = $req->email;
+                $bill ->phone = $req->phone;
+                $bill ->address = $req->add;
+                $bill ->date_order = Carbon::now();
+                $bill ->total = $key->price*$key->qty;
+                $bill ->qty = $key->qty;
+                $bill ->created_at = Carbon::now();
+                $bill ->updated_at = Carbon::now();
+            $bill->save();
+        
         }
+        return redirect('email');
     }
 
     public function email(Request $req){
